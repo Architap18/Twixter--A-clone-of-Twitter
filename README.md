@@ -3,7 +3,8 @@
 
 React Web App Clone (WAP Group Project)
 
- Project Overview
+## Project Overview
+
 This project is a **React-based clone** of a popular web application (such as YouTube, Instagram, or a similar platform). It showcases modern frontend development using React with a focus on interactivity, reusable components, and responsive design.
 
 The application uses **static data or JSON Server** to simulate backend functionality.
@@ -22,12 +23,11 @@ Objectives
 
 Tech Stack
 - **Frontend:** React.js  
-- **Styling:** CSS / Module CSS / Tailwind CSS  
-- **Routing:** React Router  
-- **State Management:** useState, useEffect, etc.  
+- **Styling:** CSS 
+- **State Management:** useState, useEffect  
 - **Mock Backend:** JSON Server / Static JSON  
 - **Version Control:** Git & GitHub  
-- **Deployment:** (Add your deployed platform link here)
+- **Deployment:** 
 
 ---
 
@@ -42,4 +42,3 @@ Features
 
 ---
 
- Project Structure
