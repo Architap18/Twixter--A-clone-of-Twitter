@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import TweetCompose from "../components/tweet/TweetCompose";
+import TweetCard from "../components/tweet/TweetCard";
 
 const HomeFeed = () => {
   const { tweets } = useContext(AppContext);
@@ -12,13 +13,7 @@ const HomeFeed = () => {
       <TweetCompose />
 
       {tweets.map((tweet) => (
-        <div key={tweet.id} className="tweet">
-          <h4>{tweet.user}</h4>
-          <p>{tweet.content}</p>
-          <div>
-            ❤️ {tweet.likes} | 💬 {tweet.comments}
-          </div>
-        </div>
+        <TweetCard key={tweet.id} tweet={tweet} />
       ))}
     </div>
   );

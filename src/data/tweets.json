@@ -1,7 +1,7 @@
 [
-  { "id": 1, "content": "Hello X!", "likes": 2, "comments": 1, "user": "Alice" },
-  { "id": 2, "content": "React is awesome 🔥", "likes": 5, "comments": 2, "user": "Bob" },
-  { "id": 3, "content": "Building Twitter clone 🚀", "likes": 3, "comments": 0, "user": "Charlie" },
+  { "id": 1, "content": "Hello X!", "likes": 2, "comments": 1, "user": "Alice", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZvg-t_MAo4dL1pMVpmjJw8O4qg5V4TfrIQ&s" },
+  { "id": 2, "content": "React is awesome 🔥", "likes": 5, "comments": 2, "user": "Bob","image":"https://xbsoftware.com/wp-content/uploads/2016/04/why-react-awesome.jpg" },
+  { "id": 3, "content": "Building Twitter clone 🚀", "likes": 3, "comments": 0, "user": "Charlie","image":"https://i.ytimg.com/vi/nKCMaATVtKc/sddefault.jpg?v=6581bc14" },
   { "id": 4, "content": "Frontend dev life 😎", "likes": 4, "comments": 1, "user": "Dev","image":"https://online.merrimack.edu/wp-content/uploads/sites/2/2024/04/blog-what-does-a-front-end-engineer-do.webpus" },
   { "id": 5, "content": "Sunset coding sessions 🌇", "likes": 7, "comments": 2, "user": "Meera", "image": "https://images.stockcake.com/public/9/1/d/91d41604-e4aa-470d-b1c7-501d7d101cb2_large/sunset-coding-session-stockcake.jpg" },
   { "id": 6, "content": "Just shipped a new feature 🚢", "likes": 9, "comments": 3, "user": "Arjun", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIK5sjC6HXcg_FSy3NNxiCuJwIgq90UAsexA&s" },
