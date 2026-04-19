@@ -1,13 +1,47 @@
+
 const RightSidebar = () => {
   return (
-    <div className="rightbar">
-      <h3>What's happening</h3>
+    <div className="rightSidebar">
 
-      <h3>Who to follow</h3>
+      {/* Search */}
+      <input className="search" placeholder="Search" />
 
-      <div className="follow">Elon Musk</div>
-      <div className="follow">Bill Gates</div>
-      <div className="follow">Drake</div>
+      {/* News */}
+      <div className="card">
+        <h3>Today's News</h3>
+
+        <div className="newsItem">
+          <p>David Miller's thrilling IPL win</p>
+          <span>2 days ago · 63K posts</span>
+        </div>
+
+        <div className="newsItem">
+          <p>Lenskart boycott controversy</p>
+          <span>2 days ago · 206K posts</span>
+        </div>
+      </div>
+
+      {/* Who to follow */}
+      <div className="card">
+        <h3>Who to follow</h3>
+
+        <div className="user">
+          <div className="info">
+            <strong>BTS_official</strong>
+            <span>@bts</span>
+          </div>
+          <button>Follow</button>
+        </div>
+
+        <div className="user">
+          <div className="info">
+            <strong>Tim Cook</strong>
+            <span>@timcook</span>
+          </div>
+          <button>Follow</button>
+        </div>
+      </div>
+
     </div>
   );
 };
