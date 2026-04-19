@@ -9,6 +9,17 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+
+.main {
+  flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 10px;
+  width: 50%;
+  border-right: 1px solid #222;
+  border-left: 1px solid #222;
+  min-height: 100vh;
+}
 .logo {
   display: flex;
   align-items: center; 
@@ -49,12 +60,22 @@ body {
   border-radius: 20px;
   width: 100%;
 }
-/*center feed*/
-.main {
-  width: 50%;
-  border-right: 1px solid #222;
-  border-left: 1px solid #222;
-  min-height: 100vh;
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-item:hover {
+  background: #1d1f23;
+  border-radius: 20px;
+}
+
+/* Active page highlight */
+.nav-item.active {
+  font-weight: bold;
 }
 .feed {
   padding: 20px;
@@ -135,4 +156,132 @@ body {
   padding: 5px 12px;
   border: none;
   cursor: pointer;
+}
+.explore {
+  display: flex;
+  width: 100%;
+  background: black;
+  color: white;
+  gap: 20px;
+}
+
+/* LEFT SIDE */
+.explore__feed {
+  flex: 2;
+}
+
+/* RIGHT SIDE */
+.explore__trends {
+  flex: 1;
+  background: #16181c;
+  padding: 15px;
+  border-radius: 15px;
+  height: fit-content;
+}
+
+/* SEARCH */
+.explore__search {
+  display: flex;
+  align-items: center;
+  background: #16181c;
+  padding: 10px;
+  border-radius: 30px;
+  gap: 10px;
+}
+
+.explore__search input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+/* TABS */
+.explore__tabs {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  border-bottom: 1px solid #2f3336;
+}
+
+.explore__tabs span {
+  padding: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.explore__tabs .active {
+  color: white;
+  border-bottom: 3px solid #1d9bf0;
+}
+
+/* news*/
+.news__card {
+  padding: 15px 0;
+  border-bottom: 1px solid #2f3336;
+}
+
+/* trends*/
+.trend {
+  padding: 10px 0;
+  border-bottom: 1px solid #2f3336;
+  cursor: pointer;
+}
+.trend:hover {
+  background: #1d1f23;
+}
+.trend__category,
+.trend__posts {
+  color: gray;
+  font-size: 12px;
+}
+.home {
+  color: white;
+}
+/* Tabs */
+.home__tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #2f3336;
+  position: sticky;
+  top: 0;
+  background: black;
+  z-index: 10;
+}
+.home__tabs span {
+  padding: 15px;
+  color: gray;
+  cursor: pointer;
+}
+.home__tabs .active {
+  color: white;
+  border-bottom: 3px solid #1d9bf0;
+}
+/* Tweet Box */
+.tweetBox {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #2f3336;
+}
+.tweetBox input {
+  flex: 1;
+  background: black;
+  border: none;
+  color: white;
+  outline: none;
+}
+.tweetBox button {
+  background: #1d9bf0;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+/* feed */
+.tweet {
+  padding: 15px;
+  border-bottom: 1px solid #2f3336;
 }

@@ -1,25 +1,52 @@
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
-import TweetCompose from "../components/tweet/TweetCompose";
+import { useState } from "react";
 
 const HomeFeed = () => {
-  const { tweets } = useContext(AppContext);
+  const [activeTab, setActiveTab] = useState("forYou");
 
   return (
-    <div className="feed">
-      <h2>Home</h2>
+    <div className="home">
 
-      <TweetCompose />
+      {/* 🔥 Tabs */}
+      <div className="home__tabs">
+        <span
+          className={activeTab === "forYou" ? "active" : ""}
+          onClick={() => setActiveTab("forYou")}
+        >
+          For you
+        </span>
 
-      {tweets.map((tweet) => (
-        <div key={tweet.id} className="tweet">
-          <h4>{tweet.user}</h4>
-          <p>{tweet.content}</p>
-          <div>
-            ❤️ {tweet.likes} | 💬 {tweet.comments}
-          </div>
+        <span
+          className={activeTab === "following" ? "active" : ""}
+          onClick={() => setActiveTab("following")}
+        >
+          Following
+        </span>
+      </div>
+
+      {/* 📝 Tweet Box */}
+      <div className="tweetBox">
+        <input placeholder="What’s happening?" />
+        <button>Post</button>
+      </div>
+
+      {/* 📰 Feed */}
+      <div className="feed">
+        <div className="tweet">
+          <h4>Elon Musk</h4>
+          <p>Grok groks 🚀</p>
         </div>
-      ))}
+
+        <div className="tweet">
+          <h4>Dev</h4>
+          <p>Frontend dev life 😎</p>
+        </div>
+
+        <div className="tweet">
+          <h4>Meera</h4>
+          <p>Sunset coding sessions 🌇</p>
+        </div>
+      </div>
+
     </div>
   );
 };

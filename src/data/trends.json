@@ -1,12 +1,17 @@
 [
-  { "id": 1, "topic": "#ReactJS", "posts": "120K posts" },
-  { "id": 2, "topic": "#FrontendDev", "posts": "89K posts" },
-  { "id": 3, "topic": "#JavaScript", "posts": "205K posts" },
-  { "id": 4, "topic": "#WebDevelopment", "posts": "76K posts" },
-  { "id": 5, "topic": "#UIUX", "posts": "54K posts" },
-  { "id": 6, "topic": "#TailwindCSS", "posts": "43K posts" },
-  { "id": 7, "topic": "#TypeScript", "posts": "97K posts" },
-  { "id": 8, "topic": "#OpenSource", "posts": "61K posts" },
-  { "id": 9, "topic": "#CodingLife", "posts": "38K posts" },
-  { "id": 10, "topic": "#TechNews", "posts": "150K posts" }
+  {
+    "category": "Technology",
+    "title": "AI is taking over dev jobs?",
+    "posts": "120K posts"
+  },
+  {
+    "category": "Sports",
+    "title": "IPL 2026 Finals",
+    "posts": "80K posts"
+  },
+  {
+    "category": "Entertainment",
+    "title": "New Marvel Movie Leak",
+    "posts": "220K posts"
+  }
 ]
