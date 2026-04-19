@@ -1,4 +1,3 @@
-
 const RightSidebar = () => {
   return (
     <div className="rightSidebar">
@@ -37,6 +36,13 @@ const RightSidebar = () => {
           <div className="info">
             <strong>Tim Cook</strong>
             <span>@timcook</span>
+          </div>
+          <button>Follow</button>
+        </div>
+        <div className="user">
+          <div className="info">
+            <strong>Narendra Modi</strong>
+            <span>@Narendra Modi</span>
           </div>
           <button>Follow</button>
         </div>

@@ -1,10 +1,12 @@
 import { Home, Compass, Bell, User, Bookmark, MessageCircle } from "lucide-react";
-
+import logo from "../../images/logo.png";
 const LeftSidebar = () => {
   return (
     <div className="sidebar">
-      <h2>TWIXTER</h2>
-
+      <div className="logo">
+        <img src={logo} alt="logo" className="logo-img" />
+        <h2>TWIXTER</h2>
+      </div>  
       <ul>
         <li><Home size={20} /> Home</li>
         <li><Compass size={20} /> Explore</li>
