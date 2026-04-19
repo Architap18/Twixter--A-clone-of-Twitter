@@ -1,0 +1,64 @@
+.tweet-card {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tweet-card__top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tweet-card__body {
+  flex: 1;
+}
+
+.tweet-card__meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.tweet-card__name {
+  color: #fff;
+  font-weight: 700;
+}
+
+.tweet-card__content {
+  margin: 8px 0 0;
+  color: #e5e7eb;
+}
+
+.tweet-card__image {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 12px;
+}
+
+.tweet-card__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  color: #9ca3af;
+}
+
+.tweet-card__action {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 0;
+}
+
+.tweet-card__action--liked {
+  color: #ef4444;
+}
+
+.tweet-card__action--bookmarked {
+  color: #f59e0b;
+}

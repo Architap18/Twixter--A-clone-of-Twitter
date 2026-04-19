@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import TweetCompose from "../components/tweet/TweetCompose";
+import TweetCard from "../components/tweet/TweetCard";
 
 const HomeFeed = () => {
   const [activeTab, setActiveTab] = useState("forYou");
+  const { tweets } = useContext(AppContext);
 
   return (
     <div className="home">
 
-      {/* 🔥 Tabs */}
+      {/* Tabs */}
       <div className="home__tabs">
         <span
           className={activeTab === "forYou" ? "active" : ""}
@@ -23,28 +28,14 @@ const HomeFeed = () => {
         </span>
       </div>
 
-      {/* 📝 Tweet Box */}
-      <div className="tweetBox">
-        <input placeholder="What’s happening?" />
-        <button>Post</button>
-      </div>
+      {/* Tweet Box */}
+      <TweetCompose />
 
-      {/* 📰 Feed */}
+      {/* Feed */}
       <div className="feed">
-        <div className="tweet">
-          <h4>Elon Musk</h4>
-          <p>Grok groks 🚀</p>
-        </div>
-
-        <div className="tweet">
-          <h4>Dev</h4>
-          <p>Frontend dev life 😎</p>
-        </div>
-
-        <div className="tweet">
-          <h4>Meera</h4>
-          <p>Sunset coding sessions 🌇</p>
-        </div>
+        {tweets.map((tweet) => (
+          <TweetCard key={tweet.id} tweet={tweet} />
+        ))}
       </div>
 
     </div>
