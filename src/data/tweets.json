@@ -1,0 +1,6 @@
+[
+  { "id": 1, "content": "Hello X!", "likes": 2, "comments": 1, "user": "Alice" },
+  { "id": 2, "content": "React is awesome 🔥", "likes": 5, "comments": 2, "user": "Bob" },
+  { "id": 3, "content": "Building Twitter clone 🚀", "likes": 3, "comments": 0, "user": "Charlie" },
+  { "id": 4, "content": "Frontend dev life 😎", "likes": 4, "comments": 1, "user": "Dev" }
+]
