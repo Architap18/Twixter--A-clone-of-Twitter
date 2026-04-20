@@ -3,7 +3,7 @@ const RightSidebar = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://gnews.io/api/v4/top-headlines?country=in&apikey=a3235d2c567657e0a8a6e5111a2abc4d")
+    fetch("/api/news")
       .then((res) => res.json())
       .then((data) => {
         if (data.articles) {
