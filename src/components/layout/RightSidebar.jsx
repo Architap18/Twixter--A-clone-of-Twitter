@@ -1,65 +1,39 @@
-import { useState, useEffect } from "react";
+import React from "react";
+import trends from "../../data/trends.json"; // Requirement: Use your 10 trends
+import UserCard from "../user/UserCard"; // Use the component you just updated
+
 const RightSidebar = () => {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    fetch("/api/news")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.articles) {
-          setNews(data.articles.slice(0, 5));
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("News fetch failed:", err);
-        setLoading(false);
-      });
-  }, []);
   return (
     <div className="rightSidebar">
-      {/* News */}
+      {/* Trends Section — This is your "Trends Panel" task */}
       <div className="card">
-      <h3>Today's News</h3>
-      {news.length > 0 ? (
-  news.map((article, index) => {
-    const posts = Math.floor(Math.random() * 90 + 10);
-    return (
-      <div className="newsItem" key={index}>
-        <p>{article.title}</p>
-        <span>
-          {posts}K posts •{" "}
-          {new Date(article.publishedAt).toLocaleDateString()}
-        </span>
+        <h3>What's happening</h3>
+        {trends.length > 0 ? (
+          trends.slice(0, 5).map((trend, index) => (
+            <div className="newsItem" key={index}>
+              <span className="trend__category">{trend.category}</span>
+              <p className="trend__title"><strong>{trend.title}</strong></p>
+              <span className="trend__posts">{trend.posts}</span>
+            </div>
+          ))
+        ) : (
+          <p style={{ fontSize: "13px", color: "gray" }}>No trends available</p>
+        )}
       </div>
-    );
-  })) : (
-      <p style={{ fontSize: "13px", color: "gray" }}> No news available</p>)}
-      </div>
-      {/* recommedations*/}
+
+      {/* Recommendations Section — Using UserCard with Follow Toggle */}
       <div className="card">
         <h3>Who to follow</h3>
-        <div className="user">
-          <div className="info">
-            <strong>BTS_official</strong>
-            <span>@bts</span>
-          </div>
-          <button>Follow</button>
-        </div>
-        <div className="user">
-          <div className="info">
-            <strong>Tim Cook</strong>
-            <span>@timcook</span>
-          </div>
-          <button>Follow</button>
-        </div>
-        <div className="user">
-          <div className="info">
-            <strong>Narendra Modi</strong>
-            <span>@narendramodi</span>
-          </div>
-          <button>Follow</button>
-        </div>
+        {/* We pass user objects to your UserCard component */}
+        <UserCard 
+          user={{ name: "BTS_official", username: "bts", avatar: "" }} 
+        />
+        <UserCard 
+          user={{ name: "Tim Cook", username: "timcook", avatar: "" }} 
+        />
+        <UserCard 
+          user={{ name: "Narendra Modi", username: "narendramodi", avatar: "" }} 
+        />
       </div>
     </div>
   );

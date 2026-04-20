@@ -1,7 +1,17 @@
+import React, { useState } from "react"; 
 import Avatar from "../common/Avatar";
 
-const UserCard = ({ user, onFollow }) => {
+const UserCard = ({ user }) => {
+  
+  const [isFollowing, setIsFollowing] = useState(false);
+
   if (!user) return null;
+
+  const handleFollowClick = (e) => {
+    
+    e.stopPropagation(); 
+    setIsFollowing(!isFollowing);
+  };
 
   return (
     <div className="user-card">
@@ -13,16 +23,14 @@ const UserCard = ({ user, onFollow }) => {
         </div>
       </div>
 
-    <button
-  className="user-card__follow"
-  onClick={onFollow}
-  type="button"
-  title={`Follow ${user.name}`}
->
-  Follow
-</button>
-
-
+      <button
+        className={`user-card__follow ${isFollowing ? "following" : ""}`}
+        onClick={handleFollowClick}
+        type="button"
+        title={isFollowing ? `Unfollow ${user.name}` : `Follow ${user.name}`}
+      >
+        {isFollowing ? "Following" : "Follow"}
+      </button>
     </div>
   );
 };

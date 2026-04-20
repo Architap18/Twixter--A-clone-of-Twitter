@@ -1,17 +1,52 @@
 [
   {
-    "category": "Technology",
+    "category": "Technology · Trending",
     "title": "AI is taking over dev jobs?",
     "posts": "120K posts"
   },
   {
-    "category": "Sports",
+    "category": "Sports · Trending",
     "title": "IPL 2026 Finals",
     "posts": "80K posts"
   },
   {
-    "category": "Entertainment",
+    "category": "Entertainment · Trending",
     "title": "New Marvel Movie Leak",
     "posts": "220K posts"
+  },
+  {
+    "category": "Politics · Trending",
+    "title": "Global Climate Summit",
+    "posts": "45K posts"
+  },
+  {
+    "category": "Gaming · Trending",
+    "title": "GTA VI Trailer 3",
+    "posts": "1.2M posts"
+  },
+  {
+    "category": "Business · Trending",
+    "title": "Bitcoin Hits New High",
+    "posts": "310K posts"
+  },
+  {
+    "category": "Music · Trending",
+    "title": "Grammy Nominations 2026",
+    "posts": "95K posts"
+  },
+  {
+    "category": "Science · Trending",
+    "title": "Mars Rover Discovery",
+    "posts": "12K posts"
+  },
+  {
+    "category": "Fashion · Trending",
+    "title": "Paris Fashion Week",
+    "posts": "67K posts"
+  },
+  {
+    "category": "Technology · Trending",
+    "title": "#ReactJS vs #VueJS",
+    "posts": "88K posts"
   }
 ]
