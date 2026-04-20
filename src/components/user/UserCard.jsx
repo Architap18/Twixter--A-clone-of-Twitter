@@ -13,9 +13,16 @@ const UserCard = ({ user, onFollow }) => {
         </div>
       </div>
 
-      <button className="user-card__follow" onClick={onFollow} type="button">
-        Follow
-      </button>
+    <button
+  className="user-card__follow"
+  onClick={onFollow}
+  type="button"
+  title={`Follow ${user.name}`}
+>
+  Follow
+</button>
+
+
     </div>
   );
 };
