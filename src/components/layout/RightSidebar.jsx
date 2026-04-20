@@ -3,7 +3,7 @@ const RightSidebar = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=b456d0a71b284942a6a1b24a24f11f0c")
+    fetch("https://gnews.io/api/v4/top-headlines?country=in&apikey=a3235d2c567657e0a8a6e5111a2abc4d")
       .then((res) => res.json())
       .then((data) => {
         if (data.articles) {
@@ -23,7 +23,7 @@ const RightSidebar = () => {
       <h3>Today's News</h3>
       {news.length > 0 ? (
   news.map((article, index) => {
-    const posts = Math.floor(Math.random() * 90 + 10); // 10–100K
+    const posts = Math.floor(Math.random() * 90 + 10);
     return (
       <div className="newsItem" key={index}>
         <p>{article.title}</p>
