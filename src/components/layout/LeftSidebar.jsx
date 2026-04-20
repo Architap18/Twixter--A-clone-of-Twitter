@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
-import {Home,Compass,Bell,User,Bookmark,MessageCircle,} from "lucide-react";
+import { Home, Compass, Bell, User, Bookmark, MessageCircle } from "lucide-react";
 import logo from "../../images/logo.png";
+
 const LeftSidebar = () => {
   return (
     <div className="sidebar">
@@ -9,6 +10,7 @@ const LeftSidebar = () => {
         <img src={logo} alt="logo" className="logo-img" />
         <h2>TWIXTER</h2>
       </div>
+
       {/* Navigation */}
       <ul>
         <li>
@@ -27,8 +29,10 @@ const LeftSidebar = () => {
           <Bell size={20} /> Notifications
         </li>
 
-        <li className="nav-item">
-          <User size={20} /> Profile
+        <li>
+          <NavLink to="/profile/alice" className="nav-item">
+            <User size={20} /> Profile
+          </NavLink>
         </li>
 
         <li className="nav-item">
