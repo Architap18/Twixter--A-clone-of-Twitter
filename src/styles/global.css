@@ -6,8 +6,8 @@ body {
 }
 .layout {
   display: flex;
-  max-width: 1200px;
-  margin: auto;
+  gap:10px;
+  margin: 10px 60px;
 }
 
 .main {
