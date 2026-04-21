@@ -10,8 +10,7 @@ const useAuth = () => {
     }
   }, []);
 
-  const login = (email) => {
-    const userData = { email };
+  const login = (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
   };
