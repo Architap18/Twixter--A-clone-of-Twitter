@@ -1,6 +1,4 @@
-html,
-body,
-#root {
+html,body,#root {
   margin: 0;
   font-family: Arial;
   background-color: black;
@@ -12,9 +10,7 @@ body,
   gap: 10px;
 }
 
-*,
-*::before,
-*::after {
+*,*::before,*::after {
   box-sizing: inherit;
 }
 
@@ -40,7 +36,6 @@ body {
   flex: 0 0 25%;
   width: 25%;
   min-width: 220px;
-  padding: 20px;
   border-right: 1px solid #222;
   height: 100%;
   overflow: hidden;
@@ -78,8 +73,7 @@ body {
 }
 
 .sidebar li {
-  padding: 12px 0;
-  font-size: 18px;
+  font-size: 25px;
   cursor: pointer;
 }
 
