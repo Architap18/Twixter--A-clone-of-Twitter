@@ -26,6 +26,7 @@ function Layout() {
           <Route path="/" element={<HomeFeed />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/profile/:username" element={<ProfilePage />} />
+
         </Routes>
       </div>
       {location.pathname === "/" && <RightSidebar />}
