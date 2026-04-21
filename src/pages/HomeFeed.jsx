@@ -11,8 +11,7 @@ const HomeFeed = () => {
       {/* Tabs */}
       <div className="home__tabs">
         <span className={activeTab === "forYou" ? "active" : ""}onClick={() => setActiveTab("forYou")}>For you</span>
-        <span className={activeTab === "following" ? "active" : ""}onClick={() => setActiveTab("following")} >
-          Following</span>
+        <span className={activeTab === "following" ? "active" : ""}onClick={() => setActiveTab("following")} >Following</span>
       </div>
       {/* Tweet Box */}
       <TweetCompose />

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import HomeFeed from "./pages/HomeFeed";
 import Explore from "./pages/SearchExplore";
 import ProfilePage from "./pages/ProfilePage";
@@ -6,6 +6,13 @@ import { AppProvider } from "./context/AppContext";
 import LeftSidebar from "./components/layout/LeftSidebar.jsx";
 import RightSidebar from "./components/layout/RightSidebar.jsx";
 import "./styles/global.css";
+
+
+const ProtectedRoute = ({ children }) => {
+  const user = localStorage.getItem("user");
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
+};
 
 function Layout() {
   const location = useLocation();
@@ -29,7 +36,20 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <Layout />
+        <Routes>
+          {/* Public route */}
+          <Route path="/login" element={<Login />} />
+
+          {/* All protected routes — redirects to /login if not logged in */}
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
       </Router>
     </AppProvider>
   );
