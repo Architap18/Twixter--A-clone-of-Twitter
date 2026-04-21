@@ -1,16 +1,21 @@
-import React, { useState } from "react"; 
+import React, { useContext } from "react"; 
 import Avatar from "../common/Avatar";
+import { AppContext } from "../../context/AppContext";
 
 const UserCard = ({ user }) => {
+  const { followedUsers, followUser, unfollowUser } = useContext(AppContext);
   
-  const [isFollowing, setIsFollowing] = useState(false);
-
   if (!user) return null;
 
+  const isFollowing = followedUsers.includes(user.username);
+
   const handleFollowClick = (e) => {
-    
     e.stopPropagation(); 
-    setIsFollowing(!isFollowing);
+    if (isFollowing) {
+      unfollowUser(user);
+    } else {
+      followUser(user);
+    }
   };
 
   return (

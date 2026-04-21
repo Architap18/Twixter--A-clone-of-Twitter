@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import users from "../../data/users.json";
+import UserCard from "../user/UserCard"; 
+
 const RightSidebar = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("/api/news")
       .then((res) => res.json())
@@ -16,50 +20,36 @@ const RightSidebar = () => {
         setLoading(false);
       });
   }, []);
+
   return (
     <div className="rightSidebar">
       {/* News */}
       <div className="card">
-      <h3>Today's News</h3>
-      {news.length > 0 ? (
-  news.map((article, index) => {
-    const posts = Math.floor(Math.random() * 90 + 10);
-    return (
-      <div className="newsItem" key={index}>
-        <p>{article.title}</p>
-        <span>
-          {posts}K posts •{" "}
-          {new Date(article.publishedAt).toLocaleDateString()}
-        </span>
+        <h3>Today's News</h3>
+        {news.length > 0 ? (
+          news.map((article, index) => {
+            const posts = Math.floor(Math.random() * 90 + 10);
+            return (
+              <div className="newsItem" key={index}>
+                <p>{article.title}</p>
+                <span>
+                  {posts}K posts •{" "}
+                  {new Date(article.publishedAt).toLocaleDateString()}
+                </span>
+              </div>
+            );
+          })
+        ) : (
+          <p style={{ fontSize: "13px", color: "gray" }}> No news available</p>
+        )}
       </div>
-    );
-  })) : (
-      <p style={{ fontSize: "13px", color: "gray" }}> No news available</p>)}
-      </div>
-      {/* recommedations*/}
-      <div className="card">
+
+      {/* Who to follow */}
+      <div className="card" style={{ maxHeight: "400px", overflowY: "auto" }}>
         <h3>Who to follow</h3>
-        <div className="user">
-          <div className="info">
-            <strong>BTS_official</strong>
-            <span>@bts</span>
-          </div>
-          <button>Follow</button>
-        </div>
-        <div className="user">
-          <div className="info">
-            <strong>Tim Cook</strong>
-            <span>@timcook</span>
-          </div>
-          <button>Follow</button>
-        </div>
-        <div className="user">
-          <div className="info">
-            <strong>Narendra Modi</strong>
-            <span>@narendramodi</span>
-          </div>
-          <button>Follow</button>
-        </div>
+        {users.map((user) => (
+          <UserCard key={user.id || user.username} user={user} />
+        ))}
       </div>
     </div>
   );

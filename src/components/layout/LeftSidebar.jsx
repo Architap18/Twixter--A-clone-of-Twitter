@@ -34,8 +34,10 @@ const LeftSidebar = () => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
-          <Bell size={20} /> Notifications
+        <li>
+          <NavLink to="/notifications" className="nav-item">
+            <Bell size={20} /> Notifications
+          </NavLink>
         </li>
 
         <li>

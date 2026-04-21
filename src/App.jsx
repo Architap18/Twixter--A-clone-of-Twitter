@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import HomeFeed from "./pages/HomeFeed";
 import Explore from "./pages/SearchExplore";
+import Notifications from "./pages/Notifications";
 import ProfilePage from "./pages/ProfilePage";
 import { AppProvider } from "./context/AppContext";
 import LeftSidebar from "./components/layout/LeftSidebar.jsx";
@@ -25,6 +26,7 @@ function Layout() {
         <Routes>
           <Route path="/" element={<HomeFeed />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile/:username" element={<ProfilePage />} />
 
         </Routes>

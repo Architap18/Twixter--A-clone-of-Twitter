@@ -86,7 +86,7 @@ const Explore = () => {
             {filteredResults.length > 0 ? (
               filteredResults.map((tweet) => (
                 <div key={tweet.id} className="news__card">
-                  <p><strong>@{tweet.username}</strong></p>
+                  <p><strong>@{tweet.user || tweet.username}</strong></p>
                   <p>{tweet.content}</p>
                 </div>
               ))
