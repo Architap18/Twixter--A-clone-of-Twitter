@@ -150,36 +150,144 @@ body {
 
 .card {
   background: #16181c;
-  padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 15px;
+  padding: 0; /* Remove padding to allow items to be full width */
+  border-radius: 16px;
+  margin-bottom: 16px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.newsItem {
-  margin-top: 10px;
+.card h3 {
+  padding: 12px 16px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
 }
 
-.newsItem span {
-  color: gray;
-  font-size: 12px;
-}
-
-.user {
+/* User Card Styles (Who to follow) */
+.user-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-.user button {
-  background: white;
-  color: black;
-  border-radius: 20px;
-  padding: 5px 12px;
+.user-card:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.user-card__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; /* Important for text truncation */
+}
+
+.user-card__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-card__name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-card__name:hover {
+  text-decoration: underline;
+}
+
+.user-card__username {
+  margin: 0;
+  font-size: 14px;
+  color: #71767b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-card__follow {
+  background-color: #eff3f4;
+  color: #0f1419;
   border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.user-card__follow:hover {
+  background-color: #d7dbdc;
+}
+
+.user-card__follow.following {
+  background-color: transparent;
+  color: #eff3f4;
+  border: 1px solid #536471;
+}
+
+.user-card__follow.following:hover {
+  background-color: rgba(244, 33, 46, 0.1);
+  color: #f4212e;
+  border-color: #f4212e;
+}
+
+.user-card__follow.following:hover::after {
+  content: "";
+}
+
+/* Custom Scrollbar for Sidebar Cards */
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+.show-more {
+  display: block;
+  padding: 16px;
+  color: #1d9bf0;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.show-more:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.newsItem {
+  padding: 12px 16px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.newsItem:hover {
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 /* Feed */
