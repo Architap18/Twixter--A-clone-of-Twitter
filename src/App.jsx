@@ -5,6 +5,7 @@ import ProfilePage from "./pages/ProfilePage";
 import { AppProvider } from "./context/AppContext";
 import LeftSidebar from "./components/layout/LeftSidebar.jsx";
 import RightSidebar from "./components/layout/RightSidebar.jsx";
+import Login from "./pages/Login";
 import "./styles/global.css";
 
 
