@@ -798,3 +798,25 @@ body {
   color: #1d9bf0;
   cursor: pointer;
 }
+
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #1d9bf0; /* Twitter blue */
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 2px solid black;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(29, 155, 240, 0.4);
+  animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}

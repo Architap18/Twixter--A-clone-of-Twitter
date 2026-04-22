@@ -6,7 +6,8 @@ import useAuth from "../../hooks/useAuth";
 import logo from "../../images/logo.png";
 
 const LeftSidebar = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, notifications } = useContext(AppContext);
+  const unreadCount = notifications ? notifications.filter((n) => !n.isRead).length : 0;
   const { user: loggedInUser } = useAuth();
 
   const profileHandle =
@@ -36,7 +37,13 @@ const LeftSidebar = () => {
 
         <li>
           <NavLink to="/notifications" className="nav-item">
-            <Bell size={20} /> Notifications
+            <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+              <Bell size={20} />
+              {unreadCount > 0 && (
+                <span className="notification-badge">{unreadCount}</span>
+              )}
+            </div>
+            Notifications
           </NavLink>
         </li>
 

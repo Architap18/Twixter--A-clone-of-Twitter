@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppContext";
 
 const Notifications = () => {
-  const { notifications } = useContext(AppContext);
+  const { notifications, markNotificationsAsRead } = useContext(AppContext);
+
+  useEffect(() => {
+    markNotificationsAsRead();
+  }, [markNotificationsAsRead]);
 
   return (
     <div className="home">

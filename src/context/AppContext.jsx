@@ -16,7 +16,13 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const addNotification = (notification) => {
-    setNotifications((prev) => [notification, ...prev]);
+    setNotifications((prev) => [{ ...notification, isRead: false }, ...prev]);
+  };
+
+  const markNotificationsAsRead = () => {
+    setNotifications((prev) =>
+      prev.map((notif) => ({ ...notif, isRead: true }))
+    );
   };
 
   const followUser = (user) => {
@@ -90,6 +96,7 @@ export const AppProvider = ({ children }) => {
         followUser,
         unfollowUser,
         notifications,
+        markNotificationsAsRead,
       }}
     >
       {children}
