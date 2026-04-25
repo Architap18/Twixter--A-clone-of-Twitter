@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { Bell, Compass, Home, MessageCircle, User, Bookmark } from "lucide-react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Home, Compass, Bell, User, Bookmark, MessageCircle } from "lucide-react";
 import { AppContext } from "../../context/AppContext";
 import useAuth from "../../hooks/useAuth";
 import logo from "../../images/logo.png";
+import PostModal from "../tweet/PostModal";
 
 const LeftSidebar = () => {
   const { currentUser, notifications } = useContext(AppContext);
   const unreadCount = notifications ? notifications.filter((n) => !n.isRead).length : 0;
   const { user: loggedInUser } = useAuth();
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
 
   const profileHandle =
     loggedInUser?.username ||
@@ -64,7 +66,15 @@ const LeftSidebar = () => {
         </li>
       </ul>
 
-      <button className="post-btn">Post</button>
+
+      <button className="post-btn" onClick={() => setIsPostModalOpen(true)}>
+        Post
+      </button>
+
+      <PostModal
+        isOpen={isPostModalOpen}
+        onClose={() => setIsPostModalOpen(false)}
+      />
     </div>
   );
 };
