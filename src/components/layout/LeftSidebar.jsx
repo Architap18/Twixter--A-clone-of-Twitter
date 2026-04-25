@@ -53,8 +53,10 @@ const LeftSidebar = () => {
           </NavLink>
         </li>
 
-        <li className="nav-item">
-          <Bookmark size={20} /> Bookmarks
+        <li>
+          <NavLink to="/bookmarks" className="nav-item">
+            <Bookmark size={20} /> Bookmarks
+          </NavLink>
         </li>
 
         <li className="nav-item">

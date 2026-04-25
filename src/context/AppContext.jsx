@@ -7,9 +7,17 @@ export const AppProvider = ({ children }) => {
   const [tweets, setTweets] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
   
-  // New state for follows and notifications
+  // New state for follows, notifications, and bookmarks
   const [followedUsers, setFollowedUsers] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const [bookmarks, setBookmarks] = useState(() => {
+    const saved = localStorage.getItem("bookmarks");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   useEffect(() => {
     setTweets(tweetsData);
@@ -57,6 +65,17 @@ export const AppProvider = ({ children }) => {
     setTweets([newTweet, ...tweets]);
   };
 
+  const toggleBookmark = (tweet) => {
+    setBookmarks((prev) => {
+      const isBookmarked = prev.some((b) => b.id === tweet.id);
+      if (isBookmarked) {
+        return prev.filter((b) => b.id !== tweet.id);
+      } else {
+        return [tweet, ...prev];
+      }
+    });
+  };
+
   // Simulate followed users posting new tweets
   useEffect(() => {
     if (followedUsers.length === 0) return;
@@ -97,6 +116,8 @@ export const AppProvider = ({ children }) => {
         unfollowUser,
         notifications,
         markNotificationsAsRead,
+        bookmarks,
+        toggleBookmark,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import Avatar from "../common/Avatar";
 import "./TweetCard.css";
 
@@ -9,8 +10,9 @@ const TweetCard = ({ tweet, onOpen }) => {
   const likesCount = tweet?.likes ?? 0;
   const commentsCount = tweet?.comments ?? 0;
 
+  const { bookmarks, toggleBookmark } = useContext(AppContext);
+  const isBookmarked = bookmarks.some((b) => b.id === tweet.id);
   const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const [likes, setLikes] = useState(likesCount);
 
   const handleLike = (e) => {
@@ -24,7 +26,7 @@ const TweetCard = ({ tweet, onOpen }) => {
 
   const handleBookmark = (e) => {
     e.stopPropagation();
-    setBookmarked((prev) => !prev);
+    toggleBookmark(tweet);
   };
 
   return (
@@ -71,11 +73,11 @@ const TweetCard = ({ tweet, onOpen }) => {
             </button>
 
             <button
-              className={`tweet-card__action ${bookmarked ? "tweet-card__action--bookmarked" : ""}`}
+              className={`tweet-card__action ${isBookmarked ? "tweet-card__action--bookmarked" : ""}`}
               onClick={handleBookmark}
               type="button"
             >
-              <span>{bookmarked ? "🔖" : "📑"}</span>
+              <span>{isBookmarked ? "🔖" : "📑"}</span>
             </button>
           </div>
         </div>

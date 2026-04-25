@@ -3,6 +3,7 @@ import HomeFeed from "./pages/HomeFeed";
 import Explore from "./pages/SearchExplore";
 import Notifications from "./pages/Notifications";
 import ProfilePage from "./pages/ProfilePage";
+import Bookmarks from "./pages/Bookmarks";
 import { AppProvider } from "./context/AppContext";
 import LeftSidebar from "./components/layout/LeftSidebar.jsx";
 import RightSidebar from "./components/layout/RightSidebar.jsx";
@@ -28,7 +29,7 @@ function Layout() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/profile/:username" element={<ProfilePage />} />
-
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Routes>
       </div>
       {location.pathname === "/" && <RightSidebar />}
