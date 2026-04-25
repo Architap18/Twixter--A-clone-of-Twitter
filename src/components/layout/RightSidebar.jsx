@@ -11,6 +11,8 @@ const RightSidebar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState({ users: [], tweets: [] });
   const [showDropdown, setShowDropdown] = useState(false);
+  const [visibleUsersCount, setVisibleUsersCount] = useState(5);
+  const [visibleNewsCount, setVisibleNewsCount] = useState(5);
   
   const { tweets } = useContext(AppContext);
   const navigate = useNavigate();
@@ -140,7 +142,7 @@ const RightSidebar = () => {
         <h3>Today's News</h3>
         {news.length > 0 ? (
           <>
-            {news.map((article, index) => {
+            {news.slice(0, visibleNewsCount).map((article, index) => {
               const posts = Math.floor(Math.random() * 90 + 10);
               return (
                 <div className="newsItem" key={index}>
@@ -154,7 +156,14 @@ const RightSidebar = () => {
                 </div>
               );
             })}
-            <div className="show-more">Show more</div>
+            {visibleNewsCount < news.length && (
+              <div 
+                className="show-more" 
+                onClick={() => setVisibleNewsCount(prev => prev + 5)}
+              >
+                Show more
+              </div>
+            )}
           </>
         ) : (
           <p style={{ padding: "16px", fontSize: "13px", color: "gray", margin: 0 }}>
@@ -166,10 +175,17 @@ const RightSidebar = () => {
       {/* Who to follow */}
       <div className="card" style={{ maxHeight: "480px", overflowY: "auto" }}>
         <h3>Who to follow</h3>
-        {usersData.slice(0, 5).map((user) => (
+        {usersData.slice(0, visibleUsersCount).map((user) => (
           <UserCard key={user.id || user.username} user={user} />
         ))}
-        <div className="show-more">Show more</div>
+        {visibleUsersCount < usersData.length && (
+          <div 
+            className="show-more" 
+            onClick={() => setVisibleUsersCount(prev => prev + 5)}
+          >
+            Show more
+          </div>
+        )}
       </div>
     </div>
   );
