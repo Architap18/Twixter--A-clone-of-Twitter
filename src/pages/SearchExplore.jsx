@@ -10,6 +10,7 @@ const Explore = () => {
   const [trendsLoading, setTrendsLoading] = useState(true); 
   const [newsError, setNewsError] = useState(false);
   const [trendsError, setTrendsError] = useState(false);
+  const [activeTab, setActiveTab] = useState("general");
 
   // Search filter
   useEffect(() => {
@@ -25,22 +26,45 @@ const Explore = () => {
 
   // News fetch
   useEffect(() => {
-    fetch("/api/news")
-      .then((res) => {
-        if (!res.ok) throw new Error("News API failed");
-        return res.json();
-      })
-      .then((data) => {
-        if (data.articles) {
-          setNews(data.articles.slice(0, 5));
+  const fetchNews = async () => {
+    try {
+      setNewsLoading(true);
+      setNewsError(false);
+      // map tabs → API category
+      const getCategory = (tab) => {
+        switch (tab) {
+          case "news":
+            return "world";
+          case "sports":
+            return "sports";
+          case "entertainment":
+            return "entertainment";
+          default:
+            return "general";
         }
-      })
-      .catch((err) => {
-        console.error("News fetch failed:", err);
-        setNewsError(true); 
-      })
-      .finally(() => setNewsLoading(false)); 
-  }, []);
+      };
+      const category = getCategory(activeTab);
+      const res = await fetch(`/api/news?category=${category}`);
+      if (!res.ok) throw new Error("News API failed");
+      const data = await res.json();
+      let articles = data.articles || [];
+      // make trending different
+      if (activeTab === "trending") {
+          articles = articles.sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+          );
+        }
+          setNews(articles.slice(0, 5));
+        } catch (err) {
+          console.error("News fetch failed:", err);
+          setNewsError(true);
+        } finally {
+          setNewsLoading(false);
+        }
+      };
+
+      fetchNews();
+    }, [activeTab]);
 
   // Reddit trends 
   useEffect(() => {
@@ -98,13 +122,12 @@ const Explore = () => {
           <>
             {/* tabs */}
             <div className="explore__tabs">
-              <span className="active">For You</span>
-              <span>Trending</span>
-              <span>News</span>
-              <span>Sports</span>
-              <span>Entertainment</span>
-            </div>
-
+                <span className={activeTab === "general" ? "active" : ""} onClick={() => setActiveTab("general")}>For You</span>
+                <span className={activeTab === "trending" ? "active" : ""} onClick={() => setActiveTab("trending")}>Trending</span>
+                <span className={activeTab === "general-news" ? "active" : ""} onClick={() => setActiveTab("general-news")}>News</span> 
+                <span className={activeTab === "sports" ? "active" : ""} onClick={() => setActiveTab("sports")}>Sports</span>
+                <span className={activeTab === "entertainment" ? "active" : ""} onClick={() => setActiveTab("entertainment")}>Entertainment</span>
+              </div>
             {/* news*/}
             <div className="news__hero">
               <h2>Today's News</h2>
