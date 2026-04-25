@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import tweetsData from "../data/tweets.json";
 
 export const AppContext = createContext();
@@ -23,17 +23,19 @@ export const AppProvider = ({ children }) => {
     setTweets(tweetsData);
   }, []);
 
-  const addNotification = (notification) => {
+  const addNotification = useCallback((notification) => {
     setNotifications((prev) => [{ ...notification, isRead: false }, ...prev]);
-  };
+  }, []);
 
-  const markNotificationsAsRead = () => {
-    setNotifications((prev) =>
-      prev.map((notif) => ({ ...notif, isRead: true }))
-    );
-  };
+  const markNotificationsAsRead = useCallback(() => {
+    setNotifications((prev) => {
+      const hasUnread = prev.some((n) => !n.isRead);
+      if (!hasUnread) return prev;
+      return prev.map((notif) => ({ ...notif, isRead: true }));
+    });
+  }, []);
 
-  const followUser = (user) => {
+  const followUser = useCallback((user) => {
     setFollowedUsers((prev) => [...prev, user.username]);
     addNotification({
       id: Date.now(),
@@ -41,9 +43,9 @@ export const AppProvider = ({ children }) => {
       message: `You started following ${user.name}`,
       timestamp: new Date().toISOString(),
     });
-  };
+  }, [addNotification]);
 
-  const unfollowUser = (user) => {
+  const unfollowUser = useCallback((user) => {
     setFollowedUsers((prev) => prev.filter((u) => u !== user.username));
     addNotification({
       id: Date.now(),
@@ -51,9 +53,9 @@ export const AppProvider = ({ children }) => {
       message: `You unfollowed ${user.name}`,
       timestamp: new Date().toISOString(),
     });
-  };
+  }, [addNotification]);
 
-  const addTweet = (text) => {
+  const addTweet = useCallback((text) => {
     const newTweet = {
       id: Date.now(),
       content: text,
@@ -62,10 +64,10 @@ export const AppProvider = ({ children }) => {
       user: "You",
     };
 
-    setTweets([newTweet, ...tweets]);
-  };
+    setTweets((prev) => [newTweet, ...prev]);
+  }, []);
 
-  const toggleBookmark = (tweet) => {
+  const toggleBookmark = useCallback((tweet) => {
     setBookmarks((prev) => {
       const isBookmarked = prev.some((b) => b.id === tweet.id);
       if (isBookmarked) {
@@ -74,7 +76,7 @@ export const AppProvider = ({ children }) => {
         return [tweet, ...prev];
       }
     });
-  };
+  }, []);
 
   // Simulate followed users posting new tweets
   useEffect(() => {
