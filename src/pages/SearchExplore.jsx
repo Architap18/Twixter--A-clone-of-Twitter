@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { FiSearch, FiSettings } from "react-icons/fi";
 import tweetsData from "../data/tweets.json";
 const Explore = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialQuery = queryParams.get("q") || "";
+
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [filteredResults, setFilteredResults] = useState([]);
   const [news, setNews] = useState([]);
   const [redditTrends, setRedditTrends] = useState([]);
@@ -11,6 +16,12 @@ const Explore = () => {
   const [newsError, setNewsError] = useState(false);
   const [trendsError, setTrendsError] = useState(false);
   const [activeTab, setActiveTab] = useState("general");
+
+  // Sync searchQuery with URL param if it changes
+  useEffect(() => {
+    const q = queryParams.get("q");
+    if (q) setSearchQuery(q);
+  }, [location.search]);
 
   // Search filter
   useEffect(() => {
