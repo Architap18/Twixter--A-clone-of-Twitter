@@ -131,10 +131,10 @@ const Explore = () => {
       <div className="explore__trends">
         <h3>Trends for you</h3>
         {trendsLoading ? (
-          <p>Loading trends...</p>
-        ) : trendsError ? (
+          <p>Loading trends...</p>) : 
+          trendsError?(
           <p>Failed to load trends.</p> 
-        ) : redditTrends.length > 0 ? (
+        ):redditTrends.length > 0 ? (
           redditTrends.map((trend) => (
             <div key={trend.id} className="trend">
               <span className="trend__category">{trend.category}</span>
