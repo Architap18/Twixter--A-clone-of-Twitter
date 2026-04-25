@@ -38,7 +38,30 @@ body {
   min-width: 220px;
   border-right: 1px solid #222;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto; /* Changed from overflow: hidden */
+  padding: 20px;
+}
+
+/* Custom Scrollbar for sidebars */
+.sidebar::-webkit-scrollbar,
+.rightSidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.rightSidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.rightSidebar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.rightSidebar::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 
 .logo {
@@ -58,12 +81,6 @@ body {
   object-fit: cover;
   transform: translateY(-2px);
   display: block;       
-}
-/* left sidebar*/
-.sidebar {
-  width: 25%;
-  padding: 20px;
-  border-right: 4px solid #222;
 }
 
 .sidebar ul {
@@ -120,21 +137,13 @@ body {
 }
 
 /* Right sidebar */
-.rightbar {
-  flex: 0 0 25%;
-  width: 25%;
-  min-width: 260px;
-  padding: 20px;
-  height: 100%;
-  overflow: hidden;
-}
-
 .rightSidebar {
   flex: 0 0 350px;
   width: 350px;
   min-width: 260px;
   padding: 10px;
-  overflow: hidden;
+  height: 100%;
+  overflow-y: auto; /* Changed from overflow: hidden */
 }
 
 .search-wrapper {

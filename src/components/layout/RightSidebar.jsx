@@ -173,7 +173,7 @@ const RightSidebar = () => {
       </div>
 
       {/* Who to follow */}
-      <div className="card" style={{ maxHeight: "480px", overflowY: "auto" }}>
+      <div className="card">
         <h3>Who to follow</h3>
         {usersData.slice(0, visibleUsersCount).map((user) => (
           <UserCard key={user.id || user.username} user={user} />
